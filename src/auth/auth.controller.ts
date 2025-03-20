@@ -1,5 +1,5 @@
 // src/auth/auth.controller.ts
-import { Controller, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, Request } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
@@ -21,7 +21,8 @@ export class AuthController {
 
   @UseGuards(AuthGuard('jwt'))
   @Post('profile')
-  getProfile() {
-    return 'This is a protected route';
+  getProfile(@Request() req) {
+    console.log(req.user)
+    return this.authService.getProfile(req.user.userId);
   }
 }

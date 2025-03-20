@@ -11,10 +11,10 @@ import { User } from './user/entities/user.entity';
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
-      port: 3307,
+      port: 3306,
       username: 'root',
       password: '',
-      database: 'nextauth',
+      database: 'db_nextauth',
       entities: [User],
       synchronize: true,
       charset: 'utf8mb4',
